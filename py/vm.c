@@ -935,7 +935,7 @@ unwind_jump:;
                         #if MICROPY_STACKLESS_STRICT
                         else {
                         deep_recursion_error:
-                            mp_exc_recursion_depth();
+                            mp_raise_recursion_depth();
                         }
                         #endif
                     }
