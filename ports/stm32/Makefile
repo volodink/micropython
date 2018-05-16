@@ -185,6 +185,7 @@ endif
 
 EXTMOD_SRC_C = $(addprefix extmod/,\
 	modonewire.c \
+	modlcdF7D.c \
         )
 
 DRIVERS_SRC_C = $(addprefix drivers/,\
@@ -264,6 +265,8 @@ SRC_HAL = $(addprefix $(HAL_DIR)/Src/stm32$(MCU_SERIES)xx_,\
 	hal_dac.c \
 	hal_dac_ex.c \
 	hal_dma.c \
+	hal_dma2d.c \
+	hal_ltdc.c \
 	hal_flash.c \
 	hal_flash_ex.c \
 	hal_gpio.c \
@@ -277,10 +280,12 @@ SRC_HAL = $(addprefix $(HAL_DIR)/Src/stm32$(MCU_SERIES)xx_,\
 	hal_rtc.c \
 	hal_rtc_ex.c \
 	hal_sd.c \
+	hal_sdram.c \
 	hal_spi.c \
 	hal_tim.c \
 	hal_tim_ex.c \
 	hal_uart.c \
+	ll_fmc.c \
 	ll_sdmmc.c \
 	ll_usb.c \
 	)
