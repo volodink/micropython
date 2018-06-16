@@ -362,6 +362,13 @@ void gc_collect_end(void) {
     GC_EXIT();
 }
 
+void gc_sweep_all(void) {
+    GC_ENTER();
+    MP_STATE_MEM(gc_lock_depth)++;
+    MP_STATE_MEM(gc_stack_overflow) = 0;
+    gc_collect_end();
+}
+
 void gc_info(gc_info_t *info) {
     GC_ENTER();
     info->total = MP_STATE_MEM(gc_pool_end) - MP_STATE_MEM(gc_pool_start);
@@ -453,6 +460,7 @@ void *gc_alloc(size_t n_bytes, bool has_finaliser) {
     if (!collected && MP_STATE_MEM(gc_alloc_amount) >= MP_STATE_MEM(gc_alloc_threshold)) {
         GC_EXIT();
         gc_collect();
+        collected = 1;
         GC_ENTER();
     }
     #endif
