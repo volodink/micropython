@@ -753,14 +753,10 @@ soft_reset_exit:
     uart_deinit();
     #if MICROPY_HW_ENABLE_CAN
     can_deinit();
-<<<<<<< HEAD
-#endif
-#if MICROPY_HW_HAS_F7DLCD
-    BSP_LCD_DeInit();
-#endif
-=======
     #endif
->>>>>>> master
+    #if MICROPY_HW_HAS_F7DLCD
+    BSP_LCD_DeInit();
+    #endif
     machine_deinit();
 
     #if MICROPY_PY_THREAD
